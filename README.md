@@ -8,9 +8,9 @@ The paper is about Instance Segmentation given a huge dataset with only bounding
 ## Model Architecture
 
 - The pipeline is as shown in the Figure. For little more explanation checkout this [blog post](https://skrish13.github.io/articles/2018-03/fair-cv-saga) (last section).
-- Backproping both losses will induce a discrepancy in the weights of $$w_{seg}$$ as for common classes between COCO and VG there are two losses (bbox and mask) while for rest classes its only one (bbox). There's a fix for this
-  - Fix: When back-propping the mask, compute the gradient of predicted mask weights ($$w_{seg}$$) wrt **weight transfer function** parameters $$\theta$$ but not bounding box weight $$w_{det}^c$$ . 
-  - $$w^c_{seg} = \tau($$stop_grad$$(w^c_{det});\theta)$$  where $$\tau$$ predicted mask weights.
+- Backproping both losses will induce a discrepancy in the weights of $w_{seg}$ as for common classes between COCO and VG there are two losses (bbox and mask) while for rest classes its only one (bbox). There's a fix for this
+  - Fix: When back-propping the mask, compute the gradient of predicted mask weights ($w_{seg}$) wrt **weight transfer function** parameters $\theta$ but not bounding box weight $w_{det}^c$ . 
+  - $w^c_{seg} = \tau($stop_grad$(w^c_{det});\theta)$  where $\tau$ predicted mask weights.
 
 ![Mask-X-RCNN](learning2seg.png)
 
@@ -22,7 +22,7 @@ The paper is about Instance Segmentation given a huge dataset with only bounding
   - `cls` , `box` , `cls+box` choices for the detection weights in `fpn_classifier_graph`
   - `class-agnostic` (baseline) and `transfer` (above diagram) modes for the Mask branch as explained in the paper.
   - Optional `MLP fusion` (class agnostic MLP) as explained in Section 3.4 of the paper.
-  - `stop_grad` for backpropping mask loss (keeping $$w_{det}$$ out of gradient calculation)
+  - `stop_grad` for backpropping mask loss (keeping $w_{det}$ out of gradient calculation)
 
 
 
