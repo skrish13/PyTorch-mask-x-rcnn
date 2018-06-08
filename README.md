@@ -29,6 +29,7 @@ The paper is about Instance Segmentation given a huge dataset with only bounding
 ## Results
 
 - I'm planning to run it on VOC+COCO soon. Will update once it's done.
+- Note - The official Detectron (Caffe2) models and code are up [here](https://github.com/ronghanghu/seg_every_thing)
 
 ## References
 
